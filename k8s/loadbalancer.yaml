@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bigbang-loadbalancer
+  annotations:
+    cloud.google.com/load-balancer-type: "External"
+spec:
+  type: LoadBalancer
+  selector:
+    app: bigbang
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

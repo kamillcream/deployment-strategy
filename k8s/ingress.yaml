@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bigbang-ingress
+  annotations:
+    kubernetes.io/ingress.class: "gce"  # GCP Load Balancer 사용
+    networking.gke.io/managed-certificates: "bigbang-cert"
+spec:
+  rules:
+    - host: bigbang.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bigbang-service
+                port:
+                  number: 80

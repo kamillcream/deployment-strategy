@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bigbang-deployment
+spec:
+  replicas: 3
+  strategy:
+    type: Recreate  # Big Bang 방식 (기존 Pod 삭제 후 새로 생성)
+  template:
+    metadata:
+      labels:
+        app: bigbang
+    spec:
+      containers:
+        - name: bigbang-container
+          image: us-central1-docker.pkg.dev/my-gcp-project/docker/bigbang:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 20
