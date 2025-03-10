@@ -4,6 +4,9 @@ metadata:
   name: bigbang-deployment
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: bigbang
   strategy:
     type: Recreate  # Big Bang 방식 (기존 Pod 삭제 후 새로 생성)
   template:
