@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bigbang-green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bigbang
+      version: green
+  template:
+    metadata:
+      labels:
+        app: bigbang
+        version: green
+    spec:
+      containers:
+        - name: bigbang-container
+          image: us-central1-docker.pkg.dev/my-gcp-project/docker/bigbang:new-version  # 새로운 버전
+          ports:
+            - containerPort: 8080
