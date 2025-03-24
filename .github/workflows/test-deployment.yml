@@ -114,5 +114,3 @@ jobs:
           kubectl apply -f ./k8s/test-deployment.yaml
           kubectl apply -f ./k8s/service.yaml
 
-      - name: 기존 Deployment의 이미지 업데이트
-        run: kubectl set image deployment/test-deployment test-container=us-central1-docker.pkg.dev/${GCP_PROJECT_ID}/docker/${IMAGE_NAME}:${IMAGE_TAG}
