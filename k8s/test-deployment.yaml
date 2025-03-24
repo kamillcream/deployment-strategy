@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: spring-container
-          image: gcr.io/[PROJECT_ID]/spring-lb-test
+          image: gcr.io/test/spring-lb-test
           ports:
             - containerPort: 8080
           env:
