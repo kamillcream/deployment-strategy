@@ -2,7 +2,7 @@ name: Blue-Green Deployment
 
 on:
   push:
-    branches: [main]
+    branches: [main2]
 
 jobs:
   CD:

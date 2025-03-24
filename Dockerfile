@@ -1,8 +1,4 @@
-FROM openjdk:17-jdk
-
-COPY build/libs/*SNAPSHOT.jar app.jar
-
-
+FROM openjdk:17-jdk-slim
+ARG JAR_FILE=build/libs/*.jar
+COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
-
-EXPOSE 8080
