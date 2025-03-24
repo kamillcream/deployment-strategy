@@ -114,3 +114,6 @@ jobs:
           kubectl apply -f ./k8s/test-deployment.yaml
           kubectl apply -f ./k8s/service.yaml
 
+      - name: 최신 이미지로 업데이트
+        run: |
+          kubectl set image deployment/spring-app spring-container=us-central1-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/docker/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
